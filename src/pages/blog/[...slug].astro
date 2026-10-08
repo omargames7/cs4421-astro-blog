@@ -1,32 +1,36 @@
 ---
-import { type CollectionEntry, getCollection, render } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
 
-export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	const authors = await getCollection('authors');
-	return posts.map((post) => {
-		const author = authors.find((entry) => entry.id === post.data.author);
-		if (!author) {
-			throw new Error(`Author profile not found: ${post.data.author}`);
-		}
-
-		return {
-			params: { slug: post.id },
-			props: { post, author },
-		};
-	});
+const post = (await getCollection('blog')).find((entry) => entry.id === Astro.params.slug);
+if (!post) {
+	Astro.response.status = 404;
 }
-type Props = {
-	post: CollectionEntry<'blog'>;
-	author: CollectionEntry<'authors'>;
-};
 
-const { post, author } = Astro.props;
-const { Content } = await render(post);
-const { author: authorId, ...postData } = post.data;
+const author = post
+	? (await getCollection('authors')).find(
+			(entry) => entry.id === post.data.author || entry.data.name === post.data.author,
+		)
+	: undefined;
+if (post && !author) {
+	throw new Error(`Author profile not found: ${post.data.author}`);
+}
+
+const postData = post
+	? (({ author: _author, ...data }) => data)(post.data)
+	: undefined;
+const { Content } = post ? await render(post) : { Content: undefined };
 ---
 
-<BlogPost {...postData} author={author.data}>
-	<Content />
-</BlogPost>
+{
+	post && author && Content && postData ? (
+		<BlogPost {...postData} author={author.data}>
+			<Content />
+		</BlogPost>
+	) : (
+		<main>
+			<h1>Page not found</h1>
+			<p>The requested blog post could not be found.</p>
+		</main>
+	)
+}
