@@ -1,5 +1,77 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-export const SITE_TITLE = 'Astro Blog';
-export const SITE_DESCRIPTION = 'Welcome to my website!';
+export const SITE_TITLE = 'Omar | Game Developer';
+export const SITE_DESCRIPTION = 'Games and projects by Omar, also known as omargames7.';
+export const GITHUB_URL = 'https://github.com/omargames7';
+export const ITCH_URL = 'https://omargames7.itch.io';
+
+export const PROJECTS = [
+	{
+		slug: 'petrichor',
+		name: 'Petrichor',
+		itchUrl: `${ITCH_URL}/petrichor`,
+		coverImage: 'https://img.itch.zone/aW1nLzMwNDA5MTEwLnBuZw==/315x250%23c/oEQK%2FD.png',
+		embed: {
+			url: 'https://itch.io/embed-upload/19491503?color=71d1b0',
+			width: 1300,
+			height: 820,
+			runLabel: 'Run game',
+		},
+		description: 'Grow plants by playing many different and cool minigames, then defend them with even more minigames!',
+		about: [
+			'Grow plants by playing many different and cool minigames and then defend them by... uhm... playing many different and cool minigames!!!',
+			'Made for a game jam in 2 weeks.',
+			'Programming and some sound effects by omargames7; art and music by mechanizedchoir; additional sound effects from Pixabay. Special thanks to Wehtnaic for the emotional support!',
+		],
+	},
+	{
+		slug: '100-spins',
+		name: '100 Spins',
+		itchUrl: `${ITCH_URL}/100-spins`,
+		coverImage: 'https://img.itch.zone/aW1nLzI4NzQ4MzQ5LnBuZw==/315x250%23c/8S6EZy.png',
+		embed: {
+			url: 'https://itch.io/embed-upload/18524507?color=500000',
+			width: 980,
+			height: 660,
+			runLabel: 'Run Slots',
+		},
+		description: 'Spin the slots to get 1 million coins by upgrading your slot machine—but you only have 100 spins.',
+		about: [
+			'Spin the slots to get 1 million coins by upgrading your slot machine. How? By spinning more slot machines, of course! But be careful: you can only spin the slot machine a total of 100 times!',
+			'Controls: mouse or touchscreen. The game also works on mobile.',
+		],
+	},
+	{
+		slug: 'spray-cycle',
+		name: 'Spray-Cycle',
+		itchUrl: `${ITCH_URL}/spray-cycle`,
+		coverImage: 'https://img.itch.zone/aW1nLzIyNTY2NTMyLnBuZw==/315x250%23c/joFLiy.png',
+		embed: {
+			url: 'https://itch.io/embed-upload/14530120?color=146688',
+			width: 1000,
+			height: 670,
+			runLabel: 'Run The loop',
+		},
+		description: 'A short story game about spray painting for your shady employer to escape the loop he put you in.',
+		about: [
+			'Spray-Cycle is a short story game about having to spray paint for your shady employer in order to escape the loop he put you in...',
+			'You use pixel art to draw, which could be hard for some people. Remember to zoom in on the image and compare them carefully.',
+			'Gameplay takes around 40 minutes, depending on how good you are.',
+			'My GMTK Game Jam 2025 submission based on the theme: LOOP.',
+		],
+	},
+	{
+		slug: 'bread-burglary',
+		name: 'Bread Burglary',
+		itchUrl: `${ITCH_URL}/bread-burglary`,
+		coverImage:
+			'https://img.itch.zone/aW1nLzE3NDIxODkyLnBuZw==/508x254%23mb/Z59Ap8.png',
+		embed: undefined,
+		description: 'A game made for the GMTK Game Jam 2024—and my first ever finished game. Good luck: it is genuinely impossible!',
+		about: [
+			'A game made for the GMTK Game Jam 2024. It is my first ever finished game.',
+			'Good luck if you play it, because it is genuinely impossible.',
+		],
+	},
+] as const;

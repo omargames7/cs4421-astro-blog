@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
@@ -7,7 +8,12 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import AuthorBio from '../components/AuthorBio.astro';
 
-type Props = Omit<CollectionEntry<'blog'>['data'], 'author'> & {
+type Props = {
+	title: string;
+	description: string;
+	pubDate: Date;
+	updatedDate?: Date;
+	heroImage?: ImageMetadata;
 	author?: CollectionEntry<'authors'>['data'];
 };
 
@@ -15,7 +21,6 @@ const { title, description, pubDate, updatedDate, heroImage, author } = Astro.pr
 ---
 
 <html lang="en">
-					{author && <AuthorBio {...author} />}
 	<head>
 		<BaseHead title={title} description={description} />
 		<style>
@@ -82,6 +87,7 @@ const { title, description, pubDate, updatedDate, heroImage, author } = Astro.pr
 						<hr />
 					</div>
 					<slot />
+					{author && <AuthorBio {...author} />}
 				</div>
 			</article>
 		</main>
