@@ -1,0 +1,205 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { PROJECTS, SITE_TITLE } from '../../consts';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+	return PROJECTS.map((project) => ({
+		params: { slug: project.slug },
+		props: { project },
+	}));
+}
+
+const { project } = Astro.props;
+const pageTitle = `${project.name} | ${SITE_TITLE}`;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={pageTitle} description={project.description} />
+		<style>
+			main {
+				width: 1300px;
+			}
+			.back-link {
+				display: inline-block;
+				margin-bottom: 2rem;
+				font-size: 0.95rem;
+			}
+			.project-header {
+				margin-bottom: 2rem;
+			}
+			.eyebrow {
+				margin: 0 0 0.5rem;
+				color: rgb(var(--gray));
+				font-size: 0.85rem;
+				font-weight: 700;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+			}
+			h1 {
+				margin-bottom: 0.75rem;
+				font-size: clamp(2.5rem, 8vw, 4rem);
+				letter-spacing: -0.04em;
+			}
+			.project-summary {
+				margin: 0;
+				font-size: 1.15rem;
+			}
+			.game-frame {
+				width: min(100%, var(--embed-width));
+				aspect-ratio: var(--embed-aspect-ratio);
+				margin: 0 auto 3rem;
+				overflow: auto;
+			}
+			.game-launch-screen {
+				display: grid;
+				place-items: center;
+				box-sizing: border-box;
+				border: 1px solid rgb(var(--gray-light));
+				border-radius: 18px;
+				background-color: #222;
+				background-image:
+					linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.55)),
+					var(--game-cover);
+				background-position: center;
+				background-size: cover;
+				text-align: center;
+			}
+			.game-launcher {
+				padding: 0.75rem 1.25rem;
+				border: 0;
+				border-radius: 4px;
+				background: #fa5c5c;
+				color: white;
+				font: inherit;
+				font-weight: 700;
+				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+				cursor: pointer;
+			}
+			.game-launcher:hover {
+				background: #e94b4b;
+			}
+			.game-launcher:focus-visible {
+				outline: 3px solid white;
+				outline-offset: 3px;
+			}
+			.story {
+				max-width: 720px;
+				margin: 0 auto;
+			}
+			.story section {
+				margin-bottom: 2.5rem;
+			}
+			.story h2 {
+				margin-bottom: 0.75rem;
+				font-size: 1.7rem;
+			}
+			.story p {
+				margin: 0;
+			}
+			.itch-link {
+				display: inline-block;
+				margin-top: 0.5rem;
+				padding: 0.7rem 1rem;
+				border-radius: 8px;
+				background: #fa5c5c;
+				color: white;
+				font-weight: 700;
+				text-decoration: none;
+			}
+			.itch-link:hover {
+				color: white;
+				background: #e94b4b;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<a class="back-link" href="/#projects">&larr; Back to all projects</a>
+			<article>
+				<header class="project-header">
+					<p class="eyebrow">Game development</p>
+					<h1>{project.name}</h1>
+					<p class="project-summary">{project.description}</p>
+				</header>
+				{
+					project.embed && (
+						<div
+							class="game-frame game-launch-screen"
+							data-game-player
+							style={`--embed-width: ${project.embed.width}px; --embed-aspect-ratio: ${project.embed.width} / ${project.embed.height}; --game-cover: url("${project.coverImage}")`}
+						>
+							<button
+								class="game-launcher"
+								type="button"
+								data-embed-url={project.embed.url}
+								data-embed-width={project.embed.width}
+								data-embed-height={project.embed.height}
+								data-game-title={`${project.name} playable game`}
+							>
+								{project.embed.runLabel}
+							</button>
+						</div>
+					)
+				}
+				<div class="story">
+					<section>
+						<h2>About the game</h2>
+						{project.about.map((paragraph) => <p>{paragraph}</p>)}
+					</section>
+					<section>
+						<h2>Development</h2>
+						<p>
+							Placeholder: share how the idea started, the tools and techniques used, and how the
+							game changed during development.
+						</p>
+					</section>
+					<section>
+						<h2>Challenges and lessons</h2>
+						<p>
+							Placeholder: describe a challenge you faced while making the game and what you learned
+							from solving it.
+						</p>
+					</section>
+					<a class="itch-link" href={project.itchUrl} target="_blank" rel="noreferrer">
+						Play {project.name} on itch.io
+					</a>
+				</div>
+			</article>
+		</main>
+		<Footer />
+		<script>
+			document.querySelectorAll<HTMLButtonElement>('[data-game-player] .game-launcher').forEach((button) => {
+				button.addEventListener('click', () => {
+					const player = button.closest<HTMLElement>('[data-game-player]');
+					const { embedUrl, embedWidth, embedHeight, gameTitle } = button.dataset;
+
+					if (!player || !embedUrl || !embedWidth || !embedHeight || !gameTitle) {
+						console.error('Unable to load the game embed because its configuration is incomplete.');
+						return;
+					}
+
+					const iframe = document.createElement('iframe');
+					iframe.className = 'game-embed';
+					iframe.src = embedUrl;
+					iframe.title = gameTitle;
+					iframe.width = embedWidth;
+					iframe.height = embedHeight;
+					iframe.allow = 'autoplay; fullscreen; gamepad';
+					iframe.allowFullscreen = true;
+					iframe.style.display = 'block';
+					iframe.style.margin = '0 auto';
+
+					player.replaceChildren(iframe);
+					player.classList.remove('game-launch-screen');
+				});
+			});
+		</script>
+	</body>
+</html>
