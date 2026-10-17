@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Report</title>
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <nav aria-label="Main navigation">
+                <a class="site-title" href="/">Omar | Game Developer</a>
+                <div class="project-links">
+                    <a href="/">Home</a>
+                    <a href="/projects/petrichor/">Petrichor</a>
+                    <a href="/projects/100-spins/">100 Spins</a>
+                    <a href="/projects/spray-cycle/">Spray-Cycle</a>
+                    <a href="/projects/bread-burglary/">Bread Burglary</a>
+                    <a class="active" href="/school-project/" aria-current="page">Computer Science Project</a>
+                </div>
+                <div class="profile-links">
+                    <a href="https://omargames7.itch.io" target="_blank" rel="noreferrer" aria-label="Visit my itch.io profile">
+                        <img src="/icons/itch.svg" alt="" width="32" height="32">
+                    </a>
+                    <a href="https://github.com/omargames7" target="_blank" rel="noreferrer" aria-label="Visit my GitHub profile">
+                        <img src="/icons/github.svg" alt="" width="32" height="32">
+                    </a>
+                </div>
+            </nav>
+        </header>
+        <div id="sideBar">
+            <ul style="list-style: none;">
+                <li class="sidebarList"><a href="#Meeting_the_brief">Meeting the brief</a></li>
+                <li class="sidebarList"><a href="#Investigation">Investigation</a></li>
+                <li class="sidebarList"><a href="#Plan_and_design">Plan and Design</a></li>
+                <li class="sidebarList"><a href="#Create">Create</a></li>
+                <li class="sidebarList"><a href="#Evaluation">Evaluation</a></li>
+                <li class="sidebarList"><a href="#References">References</a></li>
+                <li class="sidebarList"><a href="#Summary_word_count">Summary word count</a></li>
+            </ul>
+        </div>
+        <div id="mainArea">
+            <h1 id="Meeting_the_brief">Meeting the brief</h1>
+
+            <h1 id="Investigation">Investigation</h1>
+            <p>
+                From my understanding of the brief, I am required to create an embedded system that gathers data and uses it to simulate real-world processes related to forests and their effects on the world and areas around them, as well as modelling disasters, creating what-if simulations, and having an adaptive system.<br>
+                I researched the ways forest ecosystems affect climate regulation, biodiversity, and the risks associated with forests, such as wildfires, extreme weather conditions, and diseases, etc. The following are the areas I researched and thought to be interesting:
+            </p>
+            <ol>
+                <li>Drought Cycles.</li>
+                <p>
+                    Drought cycles cause trees to drop leaves, affect the timing of their fruiting and flowering, and overall tree productivity as they fight to survive and conserve water. Forests release vast amounts of vapour into the atmosphere through evaporation and transpiration, which in turn causes rainfall that falls into nearby forests and plants, which continues the cycle of rainfall in nearby areas. When this cycle of rainfall breaks, it causes forests to dry up, and that reduces evaporation, which reduces future rainfall.
+                </p>
+                <li>Wildfire Risk.</li>
+                <p>
+                    Wildfires are extreme forest disasters, which start easily when forests are dry and continue burning due to the immense amount of fuel (trees, plants, and grass) present, and this produces vast quantities of CO₂. Wildfires pose a danger to humans and animals that could be caught up in the fire or inhale the hazardous CO₂, as well as posing a threat to the climate. Forest fires account for as much as 20 percent of global carbon emissions. If prevented, millions of tons of carbon emissions could be avoided.
+                </p>
+                <li>Canopy Cover Changes.</li>
+                <p>
+                    The forest canopy is the upper layer of trees in a forest, it is crucial since it is where most photosynthesis happens, as well as being a habitat for approximately 50% of all living organisms and influencing broader ecological processes and climate regulation. A full canopy shades the forest floor, which keeps it cooler and moister. If the canopy is reduced, more sunlight reaches the forest floor, which can cause soils to dry or erode, as well as leading to a loss of carbon storage, overall affecting the entire ecosystem in the forest.
+                </p>
+            </ol>
+            <p>
+                I then researched videos of existing solutions to the issues I highlighted. The first one I saw was an automatic watering system made using the Micro:bit. In the video, a soil moisture sensor, pump, and other electronics were used to create it, when the soil moisture was low the plant was automatically watered. The second one I saw was a Fire and smoke detection system with alarm using arduino, when the smoke sensor detected smoke it would show the smoke level on an LCD screen and when there was fire present it would say so on the screen. The last one i saw was using a Raspberry Pi camera system in order to monitor forest canopy changes.
+            </p>
+
+            <h1 id="Plan_and_design">Plan and Design</h1>
+            <p>I wanted to create a good plan to follow so i can efficiently use the little time that i have. I created a simple Gantt chart with the tasks i intend to do during the duration of the 12 weeks.</p>
+            <img src="Images/Gantt Chart.png">
+            <h2>Selection of Project:</h2>
+            <p>When selecting the project there were 3 available options to pick from based on my research:</p>
+            <ul>
+                <li>Automatic Plant Watering System (Drought Risk)</li>
+                <p>For a drought risk I could make a system using a soil moisture sensor, a water level sensor connected to a water reservoir, and a temperature sensor in order to monitor a plant and when specific conditions are met like soil moisture is too low, a pump in the water reservoir would turn on to water the plant. for this i could use the micro:bit since it has a built in temperature sensor and 5x5 LED screen that I can use to display information.</p>
+                <li>Smoke Detector with Water Sprinkling System (Wildfire Risk)</li>
+                <p>For a wildfire risk i could create a system that would detect fire using a fire sensor(obviously), a smoke sensor, and a temperature sensor. When smoke is detected a buzzer would start going off and if there is too much smoke or if fire is detected, the system would turn on the sprinkler to extinguish the fire. For this I could use an arduino since it provides more 5v compared to the micro:bit's 3.3v and also because it has more pins allowing for more connections</p>
+                <li>Canopy Cover Alert System (Canopy Cover Changes)</li>
+                <p>For detecting changes in canopy cover I could use a Raspberry pi since it basically functions like a mini computer. I can include a camera that takes photos of the canopy every once in a while, the system will then analyze the image using binarization (making the image black and white), then counts the "black" pixels (trees) vs. "white" pixels (sky), giving a percentage. Then it would send a message or an alert wirelessly if there are big sudden changes.</p>
+            </ul>
+            <p>After careful consideration, I decided to pick the automatic plant watering system since the Micro:bit is quite simple compared to the other choices. From studying computer science, I have plenty of experience using a Micro:bit. It also has many built in components, which will help. I didn't pick the smoke detector system as I have zero experience with the Arduino, and learning a new microcontroller will take a long time from my 12 weeks. Finally, I decided not to pick the canopy cover alert system since I think the Raspberry Pi is a bit overkill for the scope of this project.</p>
+            <h2>Stakeholders:</h2>
+            <p>The stakeholders for this would be myself since i obviously developed the system. other stakeholders include gardeners who might benefit from automatic watering systems, educators who might use this artefact to demonstrate forest environmental  cycles, or anyone else who would use the artefact or distribute it.</p>
+            <h2>End User needs:</h2>
+            <p>End users would require the following from my system:</p>
+            <ul>
+                <li>Automated maintenance:</li>
+                <p>Users require an automated system that waters plants, stores soil moisture and temperature values, and produces a graph to show how the plant is doing at any specific time or timeframe, with little to no manual interaction.</p>
+                <li>Clear status monitoring:</li>
+                <p>the system needs to show real time data on the OLED screen for the user to easily read the plant's condition.</p>
+                <li>Safety:</li>
+                <p>The system must be reliable and safe for both the plant and the user at all times, whether the user is interacting with it or otherwise.</p>
+                <li>Ease of use:</li>
+                <p>The system must be powered easily without requiring electrical knowledge from the user. It must also be easy to interface with, whether by reading the graphed water level or simply looking at the color of the rainbow LED.</p>
+
+            </ul>
+            <h2>Components Used:</h2>
+            <p>The components I used are:</p>
+            <ul>
+                <li class="smallList"><b>Micro:Bit:</b> The microcontroller.</li>
+                <li class="smallList"><b>Iot:Bit:</b> A micro:bit expansion board.</li>
+                <li class="smallList"><b>OLED screen:</b> displays values from sensors.</li>
+                <li class="smallList"><b>Soil moisture sensor:</b> Measures soil moisture.</li>
+                <li class="smallList"><b>Water level sensor:</b> Measures water level in the reservoir.</li>
+                <li class="smallList"><b>Rainbow LED:</b> Shows the danger level of a drought.</li>
+                <li class="smallList"><b>Submersible water pump:</b> Pumps water.</li>
+                <li class="smallList"><b>water tube:</b> Directs pumped water into the soil.</li>
+                <li class="smallList"><b>Relay module:</b> Switches the pump on or off.</li>
+                <li class="smallList"><b>6v AA Battery pack:</b> Power the pump and relay.</li>
+                <li class="smallList"><b>USB cable connecting to my laptop:</b> Powers everything else.</li>
+            </ul>
+            <h2>Iot:Bit Pin interface drawing:</h2>
+            <img src="Images/Pin interface drawing.png" width="50%">
+            <h2>Components Flowchart:</h2>
+            <img src="Images/Components Flowchart.png" width="50%">
+
+            <h1 id="Create">Create</h1>
+            <h2>Key Milestones:</h2>
+            <ol>
+                <li>Wiring and Connecting the Electronics:</li>
+                <p>Using the previously created components flowchart, I started connecting my components to each other using wires. I began without help at first, but after my components started making funny sounds, I decided that maybe I should learn how to correctly connect the components. After researching, I was able to successfully connect the components easily.<br>
+                Here is an image showing the components while I was using the system:</p>
+                <img src="Images/Components.png" width="65%">
+                <li>Making the Micro:Bit Code:</li>
+                <p>I used block code to do most of the programming for the Micro:bit. I was wiring my components and programming simultaneously, since when I found any bugs in the middle of unit testing, I was able to quickly fix the code.</p>
+                <h2>Micro:Bit code:</h2>
+                <img src="Images/Microbit code.png" width="90%">
+                <li>Logging the Data:</li>
+                <p>To log the data, I programmed the Micro:bit to send strings of data containing the values for moisture, temperature, and water level to my computer. I then created the <code>Data_Logger.py</code> script to receive these lines and save them into a CSV file using the same format.</p>
+                <h2><code>Data_Logger.py</code> script:</h2>
+                <img src="Images/Data_logger script.png" width="50%">
+                <li>Testing the Embedded System:</li>
+                <p>I then tested the whole embedded system with the data logger script. I started by testing the buttons and ensuring the values were displayed on the OLED screen and the Micro:bit's 5x5 LED screen. Then, I tested the conditions for the Rainbow LED. Afterwards, I began testing the advanced requirements by checking the conditions for the pump to turn on. Finally, I verified that the Micro:bit sends data through the USB and that it is correctly received by the data logger script.</p>
+                <li>Programming the Disaster Risk Model and What-Ifs:</li>
+                <p>I then started programming the Disaster Risk Model. I chose the disaster to be a drought as it aligned best with my research. I used Pygal, which is an open source Python library used for creating interactive charts and graphs, to represent my gathered values after putting them through the model. I then tested two distinct What-If scenarios and generated graphs for them as well so I could see the difference between the values.</p>
+                <li>Final testing:</li>
+                <p>I tested the embedded system and the data logger script again to check that everything still worked. Afterwards, I used the values to plot the graph using my model and then fixed all the bugs I encountered during the process.</p>
+                <li>Creating the video and writing up the report:</li>
+                <p>I had no experience with video editing other than one time 2 years ago. I used a software named DaVinci Resolve since it was free and easy to use, using it I edited all the videos that I recorded on my phone. I also used PowerPoint to create some parts of the video. Finally, I added the video and all the images and finished writing up this report.</p>
+            </ol>
+
+            <h2>Testing:</h2>
+            <p>I used unit testing throughout my development process to ensure that every individual component and feature functioned correctly in isolation. At the very end, I performed a full system test to make sure that all parts worked together perfectly. Finally, I double checked the entire project to ensure it aligned with the requirements of the brief before moving on to complete my report.</p>
+
+            <h2>Encountered problem:</h2>
+            <p>I encountered many issues that slowed me down greatly, but there was one that made me waste around six hours. I was first planning on using a humidity sensor for a third input so I would be able to monitor the surroundings of the plant. However, at the time, I didn't know that although the IoT:bit gives extra pins for connectivity, only two of them could be used for my sensors, as the others worked terribly with them or didn't work at all. The reason was that the Micro:bit uses some of these pins for its built-in functions, like the LEDs or buttons. It took me a while to find the issue, but the way I found it was by removing all the components and changing the location of the pins. Doing that, I found out that some pins worked and some didn't. That is when I searched for the IoT:bit pin interface online. I was mad that I had to remove the sensor, alter all of my programs, and then re-record all my videos.</p>
+
+            <h2>Disaster Risk Model:</h2>
+            <p>The <code>Disaster_Risk.py</code> script first imports Pygal, opens the CSV file, and then calls the lists that will be used.</p>
+            <img src="Images/Disaster_Risk_1.png" width="40%">
+            <p>Afterwards, it defines the <code>calculateDroughtRisk()</code> function. This function takes in three values: (temp, moisture, waterLevel). If the first condition is satisfied, it will return the risk as "High." If the second condition is satisfied, it will return the risk as "Medium." Otherwise, it will return "Low."</p>
+            <img src="Images/Disaster_Risk_2.png" width="60%">
+            <p>It then defines the <code>createGraph()</code> function. Firstly, this function uses the <code>calculateDroughtRisk()</code> function to calculate the risk using the values from the lists. It then converts the risk into a percentage and finally creates a graph using all the values, including the risk percentage.</p>
+            <img src="Images/Disaster_Risk_3.png" width="90%">
+            <p>The script will then use the <code>createGraph()</code> function to make a graph of the values gathered by the embedded system.</p>
+            <img src="Images/Disaster_Risk_4.png" width="40%">
+            <p>For my first what-if, I wanted to know what would happen if the temperature increases. So, I increased all values in the list by 10.</p>
+            <img src="Images/Disaster_Risk_5.png" width="40%">
+            <p>For the second what-if, I wanted to find out what would happen if this time there was a little water left in the reservoir. So, I manually changed the values in the lists.</p>
+            <img src="Images/Disaster_Risk_6.png" width="90%">
+            <p>I then compared the graphs and what I gathered was that, in terms of drought risks, water moisture is more important than temperature since the disaster risk was overall higher for the second what-if.</p>
+            <h2>Gathered Data Graph:</h2>
+            <img src="Images/Graph1.png" width="60%">
+            <h2>What-if 1 Graph:</h2>
+            <img src="Images/Graph2.png" width="60%">
+            <h2>What-if 2 Graph:</h2>
+            <img src="Images/Graph3.png" width="60%">
+
+            
+            <h1 id="Evaluation">Evaluation</h1>
+            <p>I was quite happy with the final artefact I created. It was my first time making a complicated embedded system, and I think I did a great job. I had to learn how to wire electronics together and how to use a relay module to connect a pump. I also learned that the pump requires a more stable current and more voltage than the Micro:bit could supply, so I had to use a separate battery pack. I didn't have much experience with the hardware side of the Micro:bit; I never even knew it could use more than the three pins on it before starting this project. Other than almost flooding my electronics twice, I didn't have many problems with the embedded system. I actually found programming the model easier than programming the Micro:bit. Overall, I learned many new things. Before this, I never enjoyed working with embedded systems since I didn't feel I had control over them, but I'm sure this won't be the last time I work with one.</p>
+            <h2>Improvements:</h2>
+            <p>There are many ways I could have improved this project, such as using an Arduino instead of a Micro:bit. Even though the Micro:bit has a built-in temperature sensor, it cannot connect to as many electronics. Even using the IoT:bit, I wasn't able to use all the pins I needed because many are used for built-in functions like the 5 x 5 LED screen. Because of that, I was unable to use a humidity sensor, which I tried to implement until the last three weeks when I decided to remove it. Another improvement is time management. Even though I made a Gantt chart, I didn't use it much; I only followed it for the first few weeks. I could further improve this design by ensuring the user receives a notification when the water reservoir is empty or when the danger level is too high.</p>
+            
+            <h1 id="References">References</h1>
+            <p>
+                <a href="https://www.usgs.gov/programs/climate-adaptation-science-centers/drought-impacts-tropical-forest-ecosystems-us-caribbean">Drought Impacts to Tropical Forest Ecosystems in the U.S. Caribbean</a><br>
+                <a href="https://today.ucsd.edu/story/new-study-reveals-source-of-rain-is-major-factor-behind-drought-risks-for-farmers">New Study Reveals Source of Rain is Major Factor Behind Drought Risks for Farmers</a><br>
+                <a href="https://www.bosch.com/stories/early-forest-fire-detection-sensors/">Preventing wildfires with a small sensor</a><br>
+                <a href="https://www.sciencedirect.com/topics/earth-and-planetary-sciences/forest-canopy">Forest Canopy</a><br>
+                <a href="https://www.youtube.com/watch?v=rv4lb-U9QUU">Micro:bit Automatic Plant Watering System</a><br>
+                <a href="https://www.youtube.com/watch?v=89UyV-QNRFE">Fire and smoke detection system with alarm using arduino</a><br>
+                <a href="https://www.youtube.com/watch?v=GlHIWXobQfM&t">Constructing a Raspberry Pi Camera System for Forest Canopy Monitoring</a><br>
+                <a href="https://www.elecfreaks.com/learn-en/microbitKit/iot_kit/iot_bit.html">elecfreaks: Iot:Bit</a><br>
+                <a href="https://www.pygal.org/en/stable/">pygal</a><br>
+                <a href="https://wordcounter.net/">word counter</a><br>
+            </p>
+            <h1 id="Summary_word_count">Summary word count</h1>
+            <table align="center">
+                <tr>
+                    <th>Section</th>
+                    <th>Word Count</th>
+                </tr>
+                <tr>
+                    <td>Meeting the brief</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>Investigation</td>
+                    <td>473</td>
+                </tr>
+                <tr>
+                    <td>Plan and design</td>
+                    <td>719</td>
+                </tr>
+                <tr>
+                    <td>Create</td>
+                    <td>943</td>
+                </tr>
+                <tr>
+                    <td>Evaluation</td>
+                    <td>320</td>
+                </tr>
+                <tr>
+                    <td><b>Total</b></td>
+                    <td>2445</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

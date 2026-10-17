@@ -9,7 +9,9 @@ import { GITHUB_URL, ITCH_URL, PROJECTS, SITE_TITLE } from '../consts';
 		<div class="project-links">
 			<HeaderLink href="/">Home</HeaderLink>
 			{PROJECTS.map((project) => (
-				<HeaderLink href={`/projects/${project.slug}/`}>{project.name}</HeaderLink>
+				<HeaderLink href={project.websiteUrl ?? `/projects/${project.slug}/`}>
+					{project.name}
+				</HeaderLink>
 			))}
 		</div>
 		<div class="profile-links">

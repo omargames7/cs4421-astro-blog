@@ -1,0 +1,114 @@
+h1
+{
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(0, 85, 70);
+}
+
+h2
+{
+    font-size: 28px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+p
+{
+    font-size: 18px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+li
+{
+    font-weight: bold;
+    font-size: 18px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+table
+{
+    border: 3px solid black;
+    border-collapse: collapse;
+    width : 40%;
+    align-items: center;
+}
+
+tr:nth-child(even) 
+{
+    background-color: #d3ece3;
+}
+
+th, td 
+{
+    font-size: 24px;
+    border: 2px solid black;
+}
+
+.sidebarList a:link, .sidebarList a:visited
+{
+    text-decoration: none;
+}
+
+.sidebarList a:hover, .sidebarList a:active 
+{
+    text-decoration: underline;
+}
+
+a:visited, a:link 
+{
+    color: black;
+}
+
+a:hover, a:active 
+{
+    color: rgb(0, 137, 91);
+    text-decoration: underline;
+}
+
+.sidebarList
+{
+    margin: 0px;
+    line-height: 2;
+    padding: 0px;
+    font-size: 24px;
+}
+
+#mainArea 
+{
+    width: 78%;
+    margin-left: 22%;
+    display: flex;
+    flex-direction: column;
+
+    padding: 40px;
+    box-sizing: border-box; 
+}
+#sideBar
+{
+    width: 22%;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+
+    background-color: rgb(75, 186, 164);
+    border-right: 5px;
+    box-shadow: 1px 0px 2px 1px rgb(32, 122, 104);
+
+}
+
+.smallList
+{
+    font-weight: normal;
+    font-size: 15px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

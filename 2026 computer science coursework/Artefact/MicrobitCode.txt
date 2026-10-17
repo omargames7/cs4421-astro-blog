@@ -1,0 +1,59 @@
+# This is the code from the Makecode.microbit website as python code. I created most of the code through block code
+
+def on_button_pressed_a():
+    waterPlant()
+input.on_button_pressed(Button.A, on_button_pressed_a)
+
+def waterPlant():
+    pins.digital_write_pin(DigitalPin.P16, 1)
+    basic.pause(1000)
+    pins.digital_write_pin(DigitalPin.P16, 0)
+def refreshScreen():
+    OLED.clear()
+    OLED.write_string_new_line("Temperature:" + ("" + str(temperature)))
+    OLED.write_string_new_line("Soil moisture: " + ("" + str(moisture)) + "/100")
+    OLED.write_string_new_line("Water Level: " + ("" + str(waterLevel)) + "/100")
+    if waterPresent:
+        OLED.write_string_new_line("There is enough water stored.")
+    else:
+        OLED.write_string_new_line("Please refill water!")
+
+def on_button_pressed_b():
+    refreshScreen()
+input.on_button_pressed(Button.B, on_button_pressed_b)
+
+waterPresent = False
+waterLevel = 0
+moisture = 0
+temperature = 0
+OLED.init(128, 64)
+basic.pause(1000)
+temperature = input.temperature()
+moisture = Environment.read_soil_humidity(AnalogPin.P1)
+waterLevel = Environment.read_water_level(AnalogPin.P2)
+refreshScreen()
+serial.redirect(SerialPin.USB_TX, SerialPin.USB_RX, BaudRate.BAUD_RATE115200)
+serial.redirect_to_usb()
+
+def on_forever():
+    global temperature, moisture, waterLevel, waterPresent
+    temperature = input.temperature()
+    moisture = Environment.read_soil_humidity(AnalogPin.P1)
+    waterLevel = Environment.read_water_level(AnalogPin.P2)
+    if waterLevel > 20:
+        waterPresent = True
+    else:
+        waterPresent = False
+    if moisture < 30 and waterPresent:
+        waterPlant()
+    serial.write_line("" + str(temperature) + "," + str(moisture) + "," + str(waterLevel))
+    led.plot_bar_graph(Math.map(Environment.read_water_level(AnalogPin.P2), 0, 100, 0, 5),
+        5)
+    if temperature > 35 or moisture < 30:
+        neopixel.create(DigitalPin.P15, 24, NeoPixelMode.RGB).show_color(neopixel.colors(NeoPixelColors.RED))
+    elif temperature > 30 or moisture < 40:
+        neopixel.create(DigitalPin.P15, 24, NeoPixelMode.RGB).show_color(neopixel.colors(NeoPixelColors.YELLOW))
+    else:
+        neopixel.create(DigitalPin.P15, 24, NeoPixelMode.RGB).show_color(neopixel.colors(NeoPixelColors.GREEN))
+    basic.pause(500)
+basic.forever(on_forever)
