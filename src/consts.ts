@@ -10,6 +10,8 @@ export const PROJECTS = [
 	{
 		slug: 'petrichor',
 		name: 'Petrichor',
+		category: 'Game development',
+		websiteUrl: undefined,
 		itchUrl: `${ITCH_URL}/petrichor`,
 		coverImage: 'https://img.itch.zone/aW1nLzMwNDA5MTEwLnBuZw==/315x250%23c/oEQK%2FD.png',
 		embed: {
@@ -20,14 +22,25 @@ export const PROJECTS = [
 		},
 		description: 'Grow plants by playing many different and cool minigames, then defend them with even more minigames!',
 		about: [
-			'Grow plants by playing many different and cool minigames and then defend them by... uhm... playing many different and cool minigames!!!',
-			'Made for a game jam in 2 weeks.',
-			'Programming and some sound effects by omargames7; art and music by mechanizedchoir; additional sound effects from Pixabay. Special thanks to Wehtnaic for the emotional support!',
+			'Grow plants by playing many different and cool minigames and then defend them by playing many different and cool minigames!!!',
+			'Programming and some sound effects by omargames7',
+			'art and music by mechanizedchoir',
+			'additional sound effects from Pixabay.',
+		],
+		development: ['Made in 2 weeks for the UL Games Society Autumn Game Jam 2026 with the theme: "Nature".'],
+		challenges: [],
+		screenshots: [
+			{
+				url: 'https://img.itch.zone/aW1hZ2UvNTA3NDA2MC8zMDQxNjI5Mi5naWY=/original/OuKG1x.gif',
+				alt: 'Petrichor gameplay',
+			},
 		],
 	},
 	{
 		slug: '100-spins',
 		name: '100 Spins',
+		category: 'Game development',
+		websiteUrl: undefined,
 		itchUrl: `${ITCH_URL}/100-spins`,
 		coverImage: 'https://img.itch.zone/aW1nLzI4NzQ4MzQ5LnBuZw==/315x250%23c/8S6EZy.png',
 		embed: {
@@ -41,10 +54,28 @@ export const PROJECTS = [
 			'Spin the slots to get 1 million coins by upgrading your slot machine. How? By spinning more slot machines, of course! But be careful: you can only spin the slot machine a total of 100 times!',
 			'Controls: mouse or touchscreen. The game also works on mobile.',
 		],
+		development: ['Made in 4 days for the GMTK Game Jam 2026 with the theme: "Countdown".'],
+		challenges: [],
+		screenshots: [
+			{
+				url: 'https://img.itch.zone/aW1hZ2UvNDgxODM5OC8yODg0MDQ2OS5naWY=/original/l%2B5ZhM.gif',
+				alt: '100 Spins gameplay',
+			},
+			{
+				url: 'https://img.itch.zone/aW1hZ2UvNDgxODM5OC8yODc1ODc1MS5wbmc=/original/aHvgBW.png',
+				alt: '100 Spins screenshot',
+			},
+			{
+				url: 'https://img.itch.zone/aW1hZ2UvNDgxODM5OC8yODc1ODc1MC5wbmc=/original/41%2BLAA.png',
+				alt: '100 Spins screenshot',
+			},
+		],
 	},
 	{
 		slug: 'spray-cycle',
 		name: 'Spray-Cycle',
+		category: 'Game development',
+		websiteUrl: undefined,
 		itchUrl: `${ITCH_URL}/spray-cycle`,
 		coverImage: 'https://img.itch.zone/aW1nLzIyNTY2NTMyLnBuZw==/315x250%23c/joFLiy.png',
 		embed: {
@@ -60,10 +91,32 @@ export const PROJECTS = [
 			'Gameplay takes around 40 minutes, depending on how good you are.',
 			'My GMTK Game Jam 2025 submission based on the theme: LOOP.',
 		],
+		development: ['Made in 4 days for the GMTK Game Jam 2025 with the theme: "Loop".'],
+		challenges: [],
+		screenshots: [
+			{
+				url: 'https://img.itch.zone/aW1hZ2UvMzc3ODA5MS8yMjUxMjI3Ny5wbmc=/original/Dbho8%2F.png',
+				alt: 'Spray-Cycle screenshot',
+			},
+			{
+				url: 'https://img.itch.zone/aW1hZ2UvMzc3ODA5MS8yMjUxMjI3Ni5wbmc=/original/pOpowN.png',
+				alt: 'Spray-Cycle screenshot',
+			},
+			{
+				url: 'https://img.itch.zone/aW1hZ2UvMzc3ODA5MS8yMjUxMjIxMi5wbmc=/original/c%2FKlsG.png',
+				alt: 'Spray-Cycle screenshot',
+			},
+			{
+				url: 'https://img.itch.zone/aW1hZ2UvMzc3ODA5MS8yMjUxMjIxMC5wbmc=/original/ivMA98.png',
+				alt: 'Spray-Cycle screenshot',
+			},
+		],
 	},
 	{
 		slug: 'bread-burglary',
 		name: 'Bread Burglary',
+		category: 'Game development',
+		websiteUrl: undefined,
 		itchUrl: `${ITCH_URL}/bread-burglary`,
 		coverImage:
 			'https://img.itch.zone/aW1nLzE3NDIxODkyLnBuZw==/508x254%23mb/Z59Ap8.png',
@@ -73,5 +126,22 @@ export const PROJECTS = [
 			'A game made for the GMTK Game Jam 2024. It is my first ever finished game.',
 			'Good luck if you play it, because it is genuinely impossible.',
 		],
+		development: ['Made in 4 days for the GMTK Game Jam 2024 with the theme: "Built to scale".'],
+		challenges: [],
+		screenshots: [],
+	},
+	{
+		slug: 'school-computer-science-project',
+		name: 'Computer Science Project',
+		category: 'Computer science coursework',
+		websiteUrl: '/school-project/',
+		itchUrl: undefined,
+		coverImage: '/school-project/Images/Components.png',
+		embed: undefined,
+		description: 'Open my original computer science project website.',
+		about: [],
+		development: [],
+		challenges: [],
+		screenshots: [],
 	},
 ] as const;

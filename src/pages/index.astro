@@ -89,16 +89,16 @@ import { PROJECTS, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		<Header />
 		<main>
 			<section class="intro" aria-labelledby="intro-heading">
-				<p class="eyebrow">Independent game developer</p>
+				<p class="eyebrow">Games and projects</p>
 				<h1 id="intro-heading">Hi, I’m Omar.</h1>
-				<p>I make games and other projects. Explore some of my games below.</p>
+				<p>I make games and other projects. Explore some of my work below.</p>
 			</section>
 			<section id="projects" aria-labelledby="projects-heading">
 				<h2 class="projects-heading" id="projects-heading">Projects</h2>
 				<div class="project-grid">
 					{PROJECTS.map((project) => (
 						<article class="project-card">
-							<a href={`/projects/${project.slug}/`}>
+							<a href={project.websiteUrl ?? `/projects/${project.slug}/`}>
 								<img class="project-cover" src={project.coverImage} alt={`${project.name} cover art`} />
 								<div class="project-info">
 									<h3>{project.name}</h3>
