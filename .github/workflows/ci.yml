@@ -20,3 +20,11 @@ jobs:
           npm run lint
           npm run check
           npm run test:unit
+      - name: Install CDK Dependencies
+        run: npm ci
+        working-directory: cdk
+      - name: Build and Test CDK
+        run: |
+          npm run build
+          npm test -- --runInBand
+        working-directory: cdk
