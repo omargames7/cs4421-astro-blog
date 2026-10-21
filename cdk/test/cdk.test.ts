@@ -1,5 +1,5 @@
  import * as cdk from 'aws-cdk-lib';
- import { Template } from 'aws-cdk-lib/assertions';
+ import { Match, Template } from 'aws-cdk-lib/assertions';
  import { StaticSiteStack } from '../lib/cdk-stack';
 
  test('creates the static site bucket and CloudFront distribution', () => {
@@ -9,4 +9,5 @@
 
    template.resourceCountIs('AWS::S3::Bucket', 1);
    template.resourceCountIs('AWS::CloudFront::Distribution', 1);
+   template.hasOutput('SiteUrl', { Value: Match.anyValue() });
  });
