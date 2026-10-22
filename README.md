@@ -26,3 +26,16 @@ site instead; the school project website is served from `public/school-project/`
 | `npm run check` | Checks Astro and TypeScript |
 | `npm run lint` | Runs ESLint |
 | `npm run build` | Builds the production site |
+
+## Deployments
+
+The container workflow builds and pushes the current server-rendered Astro app
+image to ECR. The separate `StaticSiteStack` workflow publishes the standalone
+full Astro site, including `public/school-project/`, to S3 and CloudFront; it
+does not replace the container workflow. Both workflows run on pushes to
+`main`.
+
+Configure the GitHub repository secrets `AWS_ACCESS_KEY_ID` and
+`AWS_SECRET_ACCESS_KEY` before enabling either AWS deployment workflow. The
+static deployment prints its CloudFront HTTPS URL as the `SiteUrl` stack
+output.
